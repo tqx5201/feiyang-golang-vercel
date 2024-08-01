@@ -39,6 +39,7 @@ func Register(r *gin.Engine) {
 			}
 			
 		}
+		}
 	}
 /*
 	app.GET("/ping", handler.Ping)
