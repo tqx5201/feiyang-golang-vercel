@@ -21,6 +21,7 @@ func Register(r *gin.Engine) {
 	})
 
 	r.GET("/:path/:rid", func(c *gin.Context) {
+		enableTV := true
 		path := c.Param("path")
 		rid := c.Param("rid")
 		ts := c.Query("ts")
@@ -40,7 +41,7 @@ func Register(r *gin.Engine) {
 			
 		}
 		}
-	}
+	})
 /*
 	app.GET("/ping", handler.Ping)
         app.GET("/:path/:rid", handler.Feiyang)
