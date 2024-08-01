@@ -8,6 +8,36 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//
+func Register(r *gin.Engine) {
+	r.NoRoute(ErrRouter)
+
+	r.HEAD("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "请求成功！")
+	})
+
+	r.GET("/", func(c *gin.Context) {
+		c.String(http.StatusOK, "请求成功！")
+	})
+/*
+	app.GET("/ping", handler.Ping)
+        app.GET("/:path/:rid", handler.Feiyang)
+	route := app.Group("/api")
+	{
+		route.GET("/hello/:name", handler.Hello)
+		//route.GET("/doc/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	}
+ */
+}
+
+func ErrRouter(c *gin.Context) {
+	c.JSON(http.StatusBadRequest, gin.H{
+		"errors": "this page could not be found",
+	})
+}
+
+
+
 var (
 	app *gin.Engine
 )
@@ -20,7 +50,7 @@ var (
 // @host golang-vercel.vercel.app
 func init() {
 	app = gin.New()
-	routes.Register(app)
+	Register(app)
 }
 
 // Entrypoint
