@@ -26,18 +26,17 @@ func Register(r *gin.Engine) {
 		rid := c.Param("rid")
 		ts := c.Query("ts")
 		
-			if enableTV {
-				itvobj := &liveurls.Itv{}
-				cdn := c.Query("cdn")
-				if ts == "" {
-					itvobj.HandleMainRequest(c, cdn, rid)
-				} else {
-					itvobj.HandleTsRequest(c, ts)
-				}
+		if enableTV {
+			itvobj := &liveurls.Itv{}
+			cdn := c.Query("cdn")
+			if ts == "" {
+				itvobj.HandleMainRequest(c, cdn, rid)
 			} else {
-				c.String(http.StatusForbidden, "公共服务不提供TV直播")
+				itvobj.HandleTsRequest(c, ts)
 			}
-			
+		} else {
+			c.String(http.StatusForbidden, "公共服务不提供TV直播")
+		}	
 	})
 /*
 	app.GET("/ping", handler.Ping)
