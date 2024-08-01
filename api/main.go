@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	//"vercel-golang-feiyang/Golang/liveurls"
+	"vercel-golang-feiyang/Golang/liveurls"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,6 +19,27 @@ func Register(r *gin.Engine) {
 	r.GET("/", func(c *gin.Context) {
 		c.String(http.StatusOK, "请求成功！")
 	})
+
+	r.GET("/:path/:rid", func(c *gin.Context) {
+		path := c.Param("path")
+		rid := c.Param("rid")
+		ts := c.Query("ts")
+		switch path {
+		case "itv":
+			if enableTV {
+				itvobj := &liveurls.Itv{}
+				cdn := c.Query("cdn")
+				if ts == "" {
+					itvobj.HandleMainRequest(c, cdn, rid)
+				} else {
+					itvobj.HandleTsRequest(c, ts)
+				}
+			} else {
+				c.String(http.StatusForbidden, "公共服务不提供TV直播")
+			}
+			
+		}
+	}
 /*
 	app.GET("/ping", handler.Ping)
         app.GET("/:path/:rid", handler.Feiyang)
