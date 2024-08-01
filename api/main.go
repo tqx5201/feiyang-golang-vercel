@@ -25,8 +25,7 @@ func Register(r *gin.Engine) {
 		path := c.Param("path")
 		rid := c.Param("rid")
 		ts := c.Query("ts")
-		switch path {
-		case "itv":
+		
 			if enableTV {
 				itvobj := &liveurls.Itv{}
 				cdn := c.Query("cdn")
@@ -39,8 +38,6 @@ func Register(r *gin.Engine) {
 				c.String(http.StatusForbidden, "公共服务不提供TV直播")
 			}
 			
-		}
-		}
 	})
 /*
 	app.GET("/ping", handler.Ping)
