@@ -1,6 +1,6 @@
 module Golang
 
-go 1.19
+go 1.18
 
 require (
 	github.com/dop251/goja v0.0.0-20230203172422-5460598cfa32
