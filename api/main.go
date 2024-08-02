@@ -23,7 +23,7 @@ func Register(r *gin.Engine) {
 
 	r.GET("/:path/:rid", func(c *gin.Context) {
 		enableTV := true
-		path := c.Param("path")
+		//path := c.Param("path")
 		rid := c.Param("rid")
 		ts := c.Query("ts")
 		
