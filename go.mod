@@ -1,6 +1,6 @@
-module Golang
+module feiyang-golang-vercel
 
-go 1.18
+go 1.19
 
 require (
 	github.com/dop251/goja v0.0.0-20230203172422-5460598cfa32
