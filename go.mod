@@ -1,4 +1,4 @@
-module vercel-golang-vercel
+module vercel-golang-feiyang
 
 go 1.19
 
