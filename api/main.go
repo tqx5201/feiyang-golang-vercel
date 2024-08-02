@@ -3,7 +3,7 @@ package api
 import (
 	"net/http"
 
-	"feiyang-golang-vercel/Golang/liveurls"
+	"./Golang/liveurls"
 
 	"github.com/gin-gonic/gin"
 )
